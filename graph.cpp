@@ -67,3 +67,11 @@ Graph make_graph(int num_nodes, std::vector<int> u, std::vector<int> v) {
     }
     return result;
 }
+
+// Print map
+void print_map(map<int, int> m) {
+    cout << "Distribution map: " << endl;
+    for(auto p : m) {
+        std::cout << "Degree: " << p.first << " " << ", number of vertices: " << p.second << "\n";
+    }
+}

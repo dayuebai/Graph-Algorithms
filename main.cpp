@@ -7,6 +7,8 @@
 #include "tests.h"
 #include <iostream>
 
+using namespace std;
+
 int main() {
     message("=======================Start testing=======================");
     run_tests();
