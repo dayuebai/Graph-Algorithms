@@ -54,6 +54,7 @@ void run_tests()
     assert (graph.get_num_edges() == 0);
     map<int, int> distribution_map = get_degree_distribution(graph);
     print_map(distribution_map);
+    int diameter = get_diameter(graph);
 
     newline();
     message("1 node, 0 edges");
@@ -63,8 +64,9 @@ void run_tests()
     assert (graph.get_num_nodes() == 1);
     message("Testing graph returns get_num_edges() == 0");
     assert (graph.get_num_edges() == 0);
-    distribution_map = get_degree_distribution(graph);
-    print_map(distribution_map);
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map)
+    // diameter = get_diameter(graph);
 
     newline();
     message("2 nodes, 0 edges");
@@ -83,8 +85,9 @@ void run_tests()
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[1]), vector<Node>{}));
     message("Testing graph returns get_neighbors(id_to_node[2]) == vector<Node>{}");
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[2]), vector<Node>{}));
-    distribution_map = get_degree_distribution(graph);
-    print_map(distribution_map);
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map)
+    // diameter = get_diameter(graph);
 
     newline();
     message("2 nodes, 1 edge");
@@ -103,8 +106,9 @@ void run_tests()
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[1]), vector<Node>{id_to_node[2]}));
     message("Testing graph returns get_neighbors(id_to_node[2]) == vector<Node>{id_to_node[1]}");
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[2]), vector<Node>{id_to_node[1]}));
-    distribution_map = get_degree_distribution(graph);
-    print_map(distribution_map);
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map)
+    // diameter = get_diameter(graph);
     
     newline();
     message("3 nodes, 0 edges");
@@ -133,8 +137,10 @@ void run_tests()
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[2]), vector<Node>{}));
     message("Testing graph returns get_neighbors(id_to_node[3]) == vector<Node>{}");
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[3]), vector<Node>{}));
-    distribution_map = get_degree_distribution(graph);
-    print_map(distribution_map);
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map)
+    diameter = get_diameter(graph);
+    // cout << "Diameter: " << diameter << endl;
 
     newline();
     message("3 nodes, 1 edge");
@@ -163,8 +169,10 @@ void run_tests()
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[2]), vector<Node>{id_to_node[3]}));
     message("Testing graph returns get_neighbors(id_to_node[3]) == vector<Node>{id_to_node[2]}");
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[3]), vector<Node>{id_to_node[2]}));
-    distribution_map = get_degree_distribution(graph);
-    print_map(distribution_map);
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map)
+    diameter = get_diameter(graph);
+    // cout << "Diameter: " << diameter << endl;
     
     newline();
     message("3 nodes, 2 edges");
@@ -193,8 +201,10 @@ void run_tests()
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[2]), vector<Node>{id_to_node[1], id_to_node[3]}));
     message("Testing graph returns get_neighbors(id_to_node[3]) == vector<Node>{id_to_node[2]}");
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[3]), vector<Node>{id_to_node[2]}));
-    distribution_map = get_degree_distribution(graph);
-    print_map(distribution_map);
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map)
+    diameter = get_diameter(graph);
+    // cout << "Diameter: " << diameter << endl;
 
     newline();
     message("3 nodes, 3 edges");
@@ -223,8 +233,17 @@ void run_tests()
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[2]), vector<Node>{id_to_node[1], id_to_node[3]}));
     message("Testing graph returns get_neighbors(id_to_node[3]) == vector<Node>{id_to_node[1], id_to_node[2]}");
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[3]), vector<Node>{id_to_node[1], id_to_node[2]}));
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map)
+
+    newline();
+    message("12 nodes, 13 edges");
+    message("Testing graph = (12, {(1, 5), (2, 3), (3, 5), (4, 5), (4, 7), (4, 8), (5, 8), (6, 8), (7, 8), (7, 10), (7, 11), (8, 9), (11, 12)})");
+    graph = make_graph(12, vector<int>{1, 2, 3, 4, 4, 4, 5, 6, 7, 7, 7, 8, 11}, vector<int>{5, 3, 5, 5, 7, 8, 8, 8, 8, 10, 11, 9, 12});
     distribution_map = get_degree_distribution(graph);
     print_map(distribution_map);
+    diameter = get_diameter(graph);
+    cout << "Diameter: " << diameter << endl;
 
     newline();
     message(string("+++++++++++++++++++++++++++++++++++++++++++")

@@ -10,7 +10,11 @@ class Node {
     public:
         int id;
 
-        Node (int ID = 1) {
+        Node () {
+            id = 1;
+        }
+
+        Node (int ID) {
             id = ID;
         }
 
