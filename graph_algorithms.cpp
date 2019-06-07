@@ -3,6 +3,7 @@
 #include "random_generation_sample.cpp"
 #include <map>
 #include <queue>
+#include <stack>
 #include <unordered_set>
 #include <iostream>
 
@@ -68,8 +69,83 @@ int get_diameter(Graph graph) { // Using heuristic idea 2
     return diameter;
 }
 
-float get_clustering_coefficient(Graph graph) { // TODO
-    return 0.0;
+float get_clustering_coefficient(Graph graph) {
+    int num_of_triangle = 0;
+    int num_of_two_edge_path = 0;
+    int degeneracy = 0;
+    int num_nodes = graph.get_num_nodes();
+
+    for (int i = 1; i <= num_nodes; ++i) { // Calculate number of 2-edge paths
+        Node n(i);
+        int degree = graph.get_neighbors(n).size();
+        num_of_two_edge_path += degree * (degree - 1) / 2;
+    }
+
+    // Compute number of triangles in the graph
+    stack<int> L;
+    unordered_set<int> H;
+    map<int, unordered_set<int>> D;
+    int deg[num_nodes];
+    vector<int> N[num_nodes];
+
+    // Initialize array D, D[i] contains a list of the vertices 
+    // v that are not already in L for which d_v = i
+    for (int i = 1; i <= num_nodes; ++i) {
+        Node n(i);
+        int degree = graph.get_neighbors(n).size();
+        D[degree].insert(i);
+        deg[i - 1] = degree;
+    }
+
+    // Compute d-degeneracy ordering of vertices
+    for (int j = 0; j < num_nodes; ++j) { // Repeat n(number of vertices) times
+        int smallest_degree = -1;
+        for (auto itr = D.begin(); itr != D.end(); ++itr) {
+            if (!itr->second.empty()) {
+                smallest_degree = itr->first;
+                break;
+            }
+        }
+        unordered_set<int> nodes = D[smallest_degree];
+        degeneracy = max(degeneracy, smallest_degree);
+        
+        int vid = *nodes.begin();
+        L.push(vid);
+        H.insert(vid);
+
+        D[smallest_degree].erase(vid);
+        vector<Node> neighbors = graph.get_neighbors(Node(vid));
+        
+        for (int k = 0; k < neighbors.size(); ++k) {
+            Node neighbor = neighbors[k];
+            int nid = neighbor.id;
+            if (H.find(nid) == H.end()) {
+                int current_degree = deg[nid - 1]--;
+                D[current_degree].erase(nid);
+                D[current_degree - 1].insert(nid);
+                N[vid - 1].push_back(nid);
+            }
+        }
+    }
+
+    // Triangle Counting algorithm
+    while (!L.empty()) {
+        int v = L.top();
+        vector<int> n_v = N[v - 1];
+        int size = n_v.size();
+        for (int p = 0; p < size - 1; ++p) {
+            for (int q = p + 1; q < size; ++q) {
+                if (graph.is_neighbor(Node(n_v[p]), Node(n_v[q])))
+                    ++num_of_triangle;
+            }
+        }
+        L.pop();
+    }
+    cout << "Degeneracy: " << degeneracy << endl;
+    cout << "Number of triangles: " << num_of_triangle << endl;
+    cout << "Number of 2-edge paths: " << num_of_two_edge_path << endl;
+    float clustering_coefficient = 3.0 * num_of_triangle / num_of_two_edge_path;
+    return clustering_coefficient;
 }
 
 map<int, int> get_degree_distribution(Graph graph) {

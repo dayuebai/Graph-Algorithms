@@ -12,4 +12,5 @@ else
     echo Other system OS
     ./proj3
 fi
+rm ./proj3
 echo Finish running successfully.

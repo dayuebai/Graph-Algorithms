@@ -234,16 +234,32 @@ void run_tests()
     message("Testing graph returns get_neighbors(id_to_node[3]) == vector<Node>{id_to_node[1], id_to_node[2]}");
     assert (vectors_have_same_nodes(graph.get_neighbors(id_to_node[3]), vector<Node>{id_to_node[1], id_to_node[2]}));
     // distribution_map = get_degree_distribution(graph);
-    // print_map(distribution_map)
+    // print_map(distribution_map);
+    float C = get_clustering_coefficient(graph);
+    cout << "Clusering coefficient: " << C << endl;
 
     newline();
     message("12 nodes, 13 edges");
     message("Testing graph = (12, {(1, 5), (2, 3), (3, 5), (4, 5), (4, 7), (4, 8), (5, 8), (6, 8), (7, 8), (7, 10), (7, 11), (8, 9), (11, 12)})");
     graph = make_graph(12, vector<int>{1, 2, 3, 4, 4, 4, 5, 6, 7, 7, 7, 8, 11}, vector<int>{5, 3, 5, 5, 7, 8, 8, 8, 8, 10, 11, 9, 12});
-    distribution_map = get_degree_distribution(graph);
-    print_map(distribution_map);
-    diameter = get_diameter(graph);
-    cout << "Diameter: " << diameter << endl;
+    // distribution_map = get_degree_distribution(graph);
+    // print_map(distribution_map);
+    // diameter = get_diameter(graph);
+    // cout << "Diameter: " << diameter << endl;
+
+    newline();
+    message("5 nodes, 5 edges");
+    message("Testing graph = (5, {(1, 2), (1, 3), (2, 3), (3, 4), (3, 5)})");
+    graph = make_graph(5, vector<int>{1, 1, 2, 3, 3}, vector<int>{2, 3, 3, 4, 5});
+    C = get_clustering_coefficient(graph);
+    cout << "Clusering coefficient: " << C << endl;
+
+    newline();
+    message("6 nodes, 10 edges");
+    message("Testing graph = (6, {(1, 2), (1, 3), (2, 3), (2, 4), (3, 4), (4, 5), (4, 6), (5, 6), (2, 5), (3, 6)})");
+    graph = make_graph(6, vector<int>{1, 1, 2, 2, 3, 4, 4, 5, 2, 3}, vector<int>{2, 3, 3, 4, 4, 5, 6, 6, 5, 6});
+    C = get_clustering_coefficient(graph);
+    cout << "Clusering coefficient: " << C << endl;
 
     newline();
     message(string("+++++++++++++++++++++++++++++++++++++++++++")
