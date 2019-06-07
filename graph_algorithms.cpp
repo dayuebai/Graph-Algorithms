@@ -141,9 +141,9 @@ float get_clustering_coefficient(Graph graph) {
         }
         L.pop();
     }
-    cout << "Degeneracy: " << degeneracy << endl;
-    cout << "Number of triangles: " << num_of_triangle << endl;
-    cout << "Number of 2-edge paths: " << num_of_two_edge_path << endl;
+    // cout << "Degeneracy: " << degeneracy << endl;
+    // cout << "Number of triangles: " << num_of_triangle << endl;
+    // cout << "Number of 2-edge paths: " << num_of_two_edge_path << endl;
     float clustering_coefficient = 3.0 * num_of_triangle / num_of_two_edge_path;
     return clustering_coefficient;
 }

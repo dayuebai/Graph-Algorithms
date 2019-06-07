@@ -242,6 +242,8 @@ void run_tests()
     message("12 nodes, 13 edges");
     message("Testing graph = (12, {(1, 5), (2, 3), (3, 5), (4, 5), (4, 7), (4, 8), (5, 8), (6, 8), (7, 8), (7, 10), (7, 11), (8, 9), (11, 12)})");
     graph = make_graph(12, vector<int>{1, 2, 3, 4, 4, 4, 5, 6, 7, 7, 7, 8, 11}, vector<int>{5, 3, 5, 5, 7, 8, 8, 8, 8, 10, 11, 9, 12});
+    C = get_clustering_coefficient(graph);
+    cout << C << endl;
     distribution_map = get_degree_distribution(graph);
     print_map(distribution_map);
     diameter = get_diameter(graph);
@@ -267,6 +269,36 @@ void run_tests()
     cout << "Number of edges: " << ab_graph.get_num_edges() << endl;
     distribution_map = get_degree_distribution(ab_graph);
     print_map(distribution_map);
+
+    graph = make_graph(10, vector<int>{1, 1, 1, 1, 3,3,5,8,9}, vector<int>{2, 3, 4, 5, 6, 7, 8, 9, 10});
+    C = get_clustering_coefficient(graph);
+    diameter = get_diameter(graph);
+    cout << "Diameter: " << diameter << endl;
+    cout << "Clusering coefficient: " << C << endl;
+
+    graph = make_graph(10, vector<int>{1, 1, 1, 1, 3,3,5,8,9,6,8}, vector<int>{2, 3, 4, 5, 6, 7, 8, 9, 10,7,10});
+    C = get_clustering_coefficient(graph);
+    diameter = get_diameter(graph);
+    cout << "Diameter: " << diameter << endl;
+    cout << "Clusering coefficient: " << C << endl;
+
+    graph = make_graph(10, vector<int>{1, 1, 1, 1, 3,3,5,8,9,6,8,4,4}, vector<int>{2, 3, 4, 5, 6, 7, 8, 9, 10,7,10,5,8});
+    C = get_clustering_coefficient(graph);
+    diameter = get_diameter(graph);
+    cout << "Diameter: " << diameter << endl;
+    cout << "Clusering coefficient: " << C << endl;
+
+    graph = make_graph(10, vector<int>{1, 1, 1, 1, 3,3,5,8,9,6,8,4,4,3,7}, vector<int>{2, 3, 4, 5, 6, 7, 8, 9, 10,7,10,5,8,4,8});
+    C = get_clustering_coefficient(graph);
+    diameter = get_diameter(graph);
+    cout << "Diameter: " << diameter << endl;
+    cout << "Clusering coefficient: " << C << endl;
+
+    graph = make_graph(5, vector<int>{1, 1, 1, 1, 2,2,2,5,5, 4}, vector<int>{2, 3, 4, 5,3,4,5, 3,4,3});
+    C = get_clustering_coefficient(graph);
+    diameter = get_diameter(graph);
+    cout << "Diameter: " << diameter << endl;
+    cout << "Clusering coefficient: " << C << endl;
 
     newline();
     message(string("+++++++++++++++++++++++++++++++++++++++++++")
