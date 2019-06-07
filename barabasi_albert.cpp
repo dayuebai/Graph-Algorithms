@@ -8,7 +8,7 @@ using namespace std;
 
 Graph create_barabasi_albert_graph(int n, int d) { // implement in barabasi_albert.cpp only if your student ID is EVEN
     // TODO
-    Graph result = make_graph(n, vector<int>{1, 2, 3}, vector<int>{2, 3, 1}); // Assume n >= 3
+    Graph result = make_graph(n, vector<int>{}, vector<int>{});
     int size = 2 * n * d;
     int M[size];
     set<pair<int, int>> edges;
@@ -28,6 +28,7 @@ Graph create_barabasi_albert_graph(int n, int d) { // implement in barabasi_albe
         pair<int, int> edge = make_pair(uid, vid);
         pair<int, int> redge = make_pair(vid, uid);
         if (uid != vid && edges.find(edge) == edges.end()) {
+            // cout << uid << " " << vid << endl;
             result.add_edges(uid, vid);
             edges.insert(edge);
             edges.insert(redge);

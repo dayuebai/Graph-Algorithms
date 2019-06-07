@@ -26,7 +26,7 @@ measurement measure_diameter(int n, int reps, Graph graph) {
 
     measurement m;
     m.n = n;
-    m.data = total_diameter/reps;
+    m.data = (float)total_diameter/reps;
     return m;
 }
 
@@ -39,7 +39,7 @@ measurement measure_c(int n, int reps, Graph graph) {
 
     measurement m;
     m.n = n;
-    m.data = total_c/reps;
+    m.data = (float)total_c/reps;
     return m;
 }
 
@@ -78,13 +78,13 @@ int main() {
         f.close();
     }
 
-    for (int n = 10; n <= 200000; n *= 2) {
+    for (int n = 4; n <= 131072; n *= 2) {
         Graph graph = create_barabasi_albert_graph(n, 5); // Let d = 5
 
-        measurement d = measure_diameter(n, 5, graph);
+        measurement d = measure_diameter(n, 7, graph);
         add_data_to_file(d, "diameter.csv");
 
-        measurement c = measure_c(n, 5, graph);
+        measurement c = measure_c(n, 7, graph);
         add_data_to_file(c, "clustering-coefficient.csv");
     }
     return 0;

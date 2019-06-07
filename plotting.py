@@ -4,26 +4,43 @@ import pandas as pd
 import math
 import scipy.interpolate as ip
 
-def plot_data_from_file(fname_list):
-    for fname in fname_list:
-        w = pd.read_csv(fname, sep=',')
+def plot_diameter(fname):
 
-        n = w['n'].values
-        waste = w['waste'].values
+    data = pd.read_csv(fname, sep=',')
 
-        x = n
-        y = waste
-        plt.loglog(x=x, y=y, basex=2, basey=2)
-        plt.plot(x, y, label=fname.rstrip(".csv"))
+    n = data['n'].values
+    data = data['diameter'].values
 
+    x = n
+    y = data
+    plt.semilogx(x, y, basex = 2)
 
-    plt.xlabel('N: number of items')
-    plt.ylabel('Waste(N)')
-    plt.title('Quality of Bin Packing Algorithms')
-    plt.legend()
+    plt.xlabel('N: number of vertices')
+    plt.ylabel('Diameter')
+    plt.title('Diameter-Vertices Graph')
     
-    plt.savefig('waste.png', dpi = 100)
+    plt.savefig('diameter.png', dpi = 100)
     plt.show()
     plt.close()
 
-plot_data_from_file([])
+def plot_c(fname):
+
+    data = pd.read_csv(fname, sep=',')
+
+    n = data['n'].values
+    data = data['clustering-coefficient'].values
+
+    x = n
+    y = data
+    plt.semilogx(x, y, basex = 2)
+
+    plt.xlabel('N: number of vertices')
+    plt.ylabel('C: clustering coefficient')
+    plt.title('Clustering Coefficient-Vertices Graph')
+    
+    plt.savefig('coefficient.png', dpi = 100)
+    plt.show()
+    plt.close()
+
+plot_diameter("diameter.csv")
+plot_c("clustering-coefficient.csv")
