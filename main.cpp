@@ -71,6 +71,7 @@ int main() {
         map<int, int> distribution = get_degree_distribution(graph);
         ofstream f;
         f.open("degree-distribution" + to_string(n) + ".csv", ios::trunc);
+        f << "degree" << "," << "number of vertices" << "\n";
         for(auto p : distribution) {
             f << p.first  << "," << p.second << "\n";
         }

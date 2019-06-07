@@ -4,7 +4,7 @@ import pandas as pd
 import math
 import scipy.interpolate as ip
 
-def plot_waste_from_file(fname_list):
+def plot_data_from_file(fname_list):
     for fname in fname_list:
         w = pd.read_csv(fname, sep=',')
 
@@ -26,4 +26,4 @@ def plot_waste_from_file(fname_list):
     plt.show()
     plt.close()
 
-plot_waste_from_file(["next_fit.csv", "first_fit.csv", "first_fit_decreasing.csv", "best_fit.csv", "best_fit_decreasing.csv"])
+plot_data_from_file([])

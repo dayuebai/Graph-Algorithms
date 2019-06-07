@@ -1,4 +1,5 @@
 #include "project3.h"
+#include "random_generation_sample.cpp"
 #include "graph.h"
 #include <set>
 #include <iostream>
