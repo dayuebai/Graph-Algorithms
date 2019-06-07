@@ -11,9 +11,6 @@ Graph create_barabasi_albert_graph(int n, int d) { // implement in barabasi_albe
     int size = 2 * n * d;
     int M[size];
     set<pair<int, int>> edges;
-    edges.insert(make_pair(1, 2));
-    edges.insert(make_pair(1, 3));
-    edges.insert(make_pair(2, 3));
     mt19937 mt = get_mersenne_twister_generator_with_current_time_seed();
 
     for (int v = 0; v < n; ++v) {
@@ -29,8 +26,10 @@ Graph create_barabasi_albert_graph(int n, int d) { // implement in barabasi_albe
         int vid = M[2 * i + 1] + 1;
         pair<int, int> edge = make_pair(uid, vid);
         pair<int, int> redge = make_pair(vid, uid);
-        if (uid != vid && edges.find(edge) == edges.end() && edges.find(redge) == edges.end()) {
+        if (uid != vid && edges.find(edge) == edges.end()) {
             result.add_edges(uid, vid);
+            edges.insert(edge);
+            edges.insert(redge);
         }
     }
     return result;

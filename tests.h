@@ -265,7 +265,7 @@ void run_tests()
 
     Graph ab_graph = create_barabasi_albert_graph(10, 5);
     cout << "Number of edges: " << ab_graph.get_num_edges() << endl;
-    distribution_map = get_degree_distribution(graph);
+    distribution_map = get_degree_distribution(ab_graph);
     print_map(distribution_map);
 
     newline();
