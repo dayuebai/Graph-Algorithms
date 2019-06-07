@@ -56,7 +56,7 @@ int get_diameter(Graph graph) { // Using heuristic idea 2
         int farthest_distance = 0;
         
         mt19937 mt = get_mersenne_twister_generator_with_current_time_seed();
-        int random_start_index = randint(mt, 1, num_nodes);
+        int random_start_index = get_uniform_int_generator(1, num_nodes)(mt);
         Node start_node(random_start_index);
         
         pair<Node, int> farthest = make_pair(start_node, farthest_distance);
