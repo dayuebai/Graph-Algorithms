@@ -58,9 +58,6 @@ void add_data_to_file(measurement m, string filename) {
 }
 
 int main() {
-    // message("=======================Start testing=======================");
-    // run_tests();
-    // message("=======================Finish testing=======================");
     create_file("diameter.csv", "diameter");
     create_file("clustering-coefficient.csv", "clustering-coefficient");
 
@@ -81,11 +78,13 @@ int main() {
     for (int n = 4; n <= 131072; n *= 2) {
         Graph graph = create_barabasi_albert_graph(n, 5); // Let d = 5
 
-        measurement d = measure_diameter(n, 7, graph);
+        measurement d = measure_diameter(n, 5, graph);
         add_data_to_file(d, "diameter.csv");
 
-        measurement c = measure_c(n, 7, graph);
-        add_data_to_file(c, "clustering-coefficient.csv");
+        if (n <= 65536) {
+            measurement c = measure_c(n, 5, graph);
+            add_data_to_file(c, "clustering-coefficient.csv");
+        }
     }
     return 0;
 }
