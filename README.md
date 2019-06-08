@@ -320,7 +320,7 @@ The goals of our testing are:
 
         As shown in the image, the graph has a long tail. To further verify if the degree distribution has a power, we perform regression analysis shown below. We can find that: y ~ -2.02x + 16.51, y = log(#vertices), x = log(degree).
 
-        According to the proof above, the slope of the line fitting into data is: -2.02. The exponent (-a) of the power law is: 16.51.
+        According to the proof above, the slope of the line fitting into data is: -2.02. The exponent (-a) of the power law is: -2.02.
 
         ![regression100000](regression100000.png)
 
