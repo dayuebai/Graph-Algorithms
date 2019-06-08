@@ -4,7 +4,6 @@
 #include "graph.cpp"
 #include "graph_algorithms.cpp"
 #include "barabasi_albert.cpp"
-#include "tests.h"
 #include <float.h>
 #include <iostream>
 #include <fstream>
