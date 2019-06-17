@@ -232,7 +232,7 @@ The goals of our testing are:
 
     As number of vertices n grows from 4 to 131072 (= 2^17), plot the average diameter in a lin-log scale (base of logartihm is 2). The graph is shown as below.
 
-    ![diameter](diameter.png)
+    ![diameter](./resource/diameter.png)
 
     As shown in the graph above, diameter grows as number of vertices (n) grow. Therefore, diameter grows as a function of n.
 
@@ -240,7 +240,7 @@ The goals of our testing are:
 
     To determine if diameter grows proportional to the function, log(n), or according to a function that grows faster or slower than the function, log n, we need to perform regression analysis on lin-log scale. Results of regression analysis is shown in the graph below.
 
-    ![diameter-regression](diameter-regression.png)
+    ![diameter-regression](./resource/diameter-regression.png)
 
     As shown in the graph, the line that fits into the data points represents the relation between diameter of graph and number of vertices in the graph, which is: Diameter ~ 0.29x + 1.18, x = log(#vertices). Therefore, diameter grows proportional to log(n). The slope is approximately equal to 0.29.
 
@@ -248,7 +248,7 @@ The goals of our testing are:
 
     Similar to the analysis of graph diameter, as number of vertices n grows from 4 to 65536 (= 2^16), plot the average diameter in a lin-log scale (base of logartihm is 2). The graph is shown as below.
 
-    ![coefficient](coefficient.png)
+    ![coefficient](./resource/coefficient.png)
 
     According to the plotting, we can observe that clustering coefficient of a graph decereases as the number of vertices grows. Based on this fact, we can derive the conclusion that clustering coefficient decreases as a function of n.
 
@@ -273,12 +273,12 @@ The goals of our testing are:
 
         **lin-lin scale**
 
-        ![istribution1000](istribution1000-linlin.png)
+        ![istribution1000](./resource/istribution1000-linlin.png)
 
         
         **log-log scale**
 
-        ![istribution1000](istribution1000-loglog.png)
+        ![istribution1000](./resource/istribution1000-loglog.png)
 
         **Regression Analysis:**
 
@@ -286,17 +286,17 @@ The goals of our testing are:
 
         According to the proof above, the slope of the line fitting into data is: -1.59. The exponent (-a) of the power law is: -1.59.
 
-        ![regression1000](regression1000.png)
+        ![regression1000](./resource/regression1000.png)
 
     * Number of vertices (n) = 10000
 
         **lin-lin scale**
 
-        ![istribution10000](istribution10000-linlin.png)
+        ![istribution10000](./resource/istribution10000-linlin.png)
 
         **log-log scale**
 
-        ![istribution10000](istribution10000-loglog.png)
+        ![istribution10000](./resource/istribution10000-loglog.png)
 
         **Regression Analysis:**
 
@@ -304,17 +304,17 @@ The goals of our testing are:
 
         According to the proof above, the slope of the line fitting into data is: -1.86. The exponent (-a) of the power law is: -1.86.
 
-        ![regression10000](regression10000.png)
+        ![regression10000](./resource/regression10000.png)
 
     * Number of vertices (n) = 100000
 
         **lin-lin scale**
 
-        ![istribution1000](istribution100000-linlin.png)
+        ![istribution1000](./resource/istribution100000-linlin.png)
 
         **log-log scale**
 
-        ![istribution1000](istribution100000-loglog.png)
+        ![istribution1000](./resource/istribution100000-loglog.png)
 
         **Regression Analysis:**
 
@@ -322,7 +322,7 @@ The goals of our testing are:
 
         According to the proof above, the slope of the line fitting into data is: -2.02. The exponent (-a) of the power law is: -2.02.
 
-        ![regression100000](regression100000.png)
+        ![regression100000](./resource/regression100000.png)
 
 ## Conclusion
 
