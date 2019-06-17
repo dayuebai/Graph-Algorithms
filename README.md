@@ -1,4 +1,4 @@
-# Project 3 - Algorithmic Experiments of Real-World Phenomena
+# Algorithmic Experiments of Real-World Phenomena
 
 ## Table of Contents
 
